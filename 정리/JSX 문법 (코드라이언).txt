@@ -1,0 +1,59 @@
+JSX 문법  
+1. 하나의 요소로 감싼다.
+
+function Hello() { 
+	return (
+	    <div>Hello </div>
+	    <div>I'm da-in!</div>
+	);
+} 
+ 위에 return  이아닌 div로 하나의 문법으로 감싸야한다!! 위와같이 실행할경우 에러가 발생한다.
+
+function Hello() { 
+	<div>
+	    <div>Hello </div>
+	    <div>I'm da-in!</div>
+	</div>
+} 
+
+
+function Hello () 이와 같이 함수 비슷한것이 하나하나의 컴포넌트 입니다.
+
+
+Fragment태그 
+Fragment는 DOM에 노드를 추가하지 않고도 자식 목록을 그룹화 할수있다.
+ <Fragment > 태그를 사용하지만 축약형으로는  <> 으로 사용할수있습니다.
+
+JSX 문법에서도 자바스크립트를 사용할수있다.
+1. {} brackets로 감싸기 
+
+function Hello(){
+	const name = 'da-in';
+	return(
+	    <>  //Fragment
+		<div>Hello</div>
+		<div>I'm {name} ! </div>
+             </>
+	);
+}
+
+JSX 문법 조건부 렌더링
+javascript 처럼 if , for 를 사용할수없지만 그의 해결책으로는 
+(1). Return 문 밖에서 if문 사용한다.
+	function App(){
+		const num = 1;
+		if(num == 1){
+			return <>num is 1 </>
+		}else {
+			return <> num is not 1 </>
+}
+
+(2). &&와 || 이용하기
+	function App(){
+		const num = 1;
+		return( 
+			<>
+				{num==1 && <div>num은 1이 맞습니다.</div>|
+			 </>
+		);
+}

@@ -1,0 +1,67 @@
+yarn start을 시작하면 react가 실행이된다.
+
+public :  정적파일들이 들어있다.
+
+
+react 파일에서 src 폴더를 제일 사용많이 사용한다
+App.js 사용한다  <껍데기안에 사용한다.
+
+
+
+App.js 에 있는 내용들을 index.js 로 가져와 실행하게 된다.
+
+
+React을 파일을 이용할때 ex)Hello.jsx 로 이용해야한다.
+
+index.js 만들어진 컴포턴트는 App.js에 넣는역활
+컴포넌트를 하나로 만드는 역활 App.js 역활
+
+
+Auto Import    Import를 자동으로해줌
+
+JSX  = Javascript + XML
+
+JSX는 마크업언어이다. 표시하기위한
+
+
+HTML 데이터를 화면추출을 위함이라면
+XML 데이터를 저장하고 전달하는게 주목적이다.
+각 태크를 직접 정의할수있다.
+
+Babel 
+
+JSX -> JS
+Jsx:   선언형 : 결과물을 선언 
+function App() { return (<h1> Hello, World! </h1>);}
+
+JS   : 명령형 : 어떻게 만들지 방법을 명령 
+function App() {return React.createElement("h1",null,"Hello,World!");}
+
+스타일을 할려할때 객체형태여야한다. 카멜케이스로 해야한다.
+
+<div style={{ marginTop: "10px", backgroundColor: "red" }}>
+      Hello World!
+    </div>
+
+이런형식으로 사용이 가능하지만, 이렇게 게속 이어서 이용하게 되면 가독성이 떨어지므로 
+아래와 같이 수정합니다.
+
+Html 에서는 class 로 사용하였지만, jsx 에서는 className으로 사용된다!!!
+
+yarn add styled-components 를 설치하여 
+스타일링 되어있는 컴포넌트를 이용할수있다.
+
+사용법은 
+return 위의 이용하여 컴포넌트 ( function) 만든다.
+
+function Hello() {
+  const StyledButton = styled.button`
+    color: red;
+    background-color: gray;
+  `;
+위와 같은식으로 만든다.
+
+실행하기위한 것은 return 다음 바로  아래와 같이 실행시켜준다.
+return <StyledButton>나만의 버튼</StyledButton>;
+
+스타일버튼은 기본 버튼에서 상속받아 스타일 라이브러리 클래스를 자동으로 지정되어있다.
