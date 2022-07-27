@@ -242,4 +242,5 @@ export const PostSubmit = styled.div`
   font-family: "Black Han Sans", sans-serif;
   font-size: 20px;
 `;
+
 // export default MediaDiv;
