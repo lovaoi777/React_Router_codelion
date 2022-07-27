@@ -1,0 +1,37 @@
+nuxt.js 프로젝트 구조 
+ 1. nuxt.config.json
+    nuxt.config.json은 nuxt.js의 설정 정보가 들어 있는 파일입니다.
+    해당 파일을 통해 build, cashe , css , dev ,env, generate,jead, loading , plugin , rootDir , router, srcDir , transition의 기본 설정을 덮어씌울수 있음 (최소한의 필요한 것마나 수정하여 진행할것 ) 
+  2. package.json
+   package.json 파일은 javaScript 기반의 프로젝트에서 매우 중요한 파일입니다. 
+   해당 프로젝트의 의존성 모듈과 각종 정보, 스트립트를 포함하는 파일입니다. 앞에서 npm install을 통해 의존성 모듈을 설치했는데 설치되는 모듈 정보가 포함된 곳이 package.json 파일입니다. 
+   해당 파일은 npm init 명령어를 통해 생성 가능합니다.
+
+  3. assets 
+   assets은 SASS, LESS가 빌드가 필요한 JavaScript 파일이 포함되는 디렉터리 입니다 . 
+	
+  4. components
+    components는 nuxt.js 에서 사용되는 컴포넌트들을 포함하는 디렉터리이다.  화면을 구성하고 있는 요소를 컴포넌트라고 부릅니다. (모듈, 부품의 개념) == vue 사용
+    components에서 만들어지는 파일은 vue 파일이다 .
+
+  5. layouts
+    layout은 nuxt.js에서 사용하는 기본 레이아웃을 포함하는 디렉터리입니다.
+    웹 애플리케이션의 대부분은 상단 탭, 하단 탭, 좌/우측 탭은 모든 페이지에서 동일하게 적용한다 . ,페이지마다 만드는 것이 아니라 , 한번만 정의하면 된다 .
+ 
+  6. middleware 
+    middleware는 레이아웃, 페이지가  렌더링되기 전에 실행되는 파일이 정의되는 곳이다.  (클라이언트 및 서버에서도 잘 쓰인다)
+
+  7. pages 
+    pages는 우리가 보는 일반적인 vue 파일을 포함되는 곳이다.  (pages도 컴포넌트의 일종입니다. )
+
+  8. plugins
+    plugins는 vue로 만든 웹 애플리케이션이 생성되기 전에 실행시키고 싶은 js 파일을 포함합니다.
+    외부에서 설치한 모듈이나 직접 만든 모듈 모두 포함한다. 외부 모듈로는 axios , vue=notifications 등이 있습니다.
+
+  9. static
+    static은 정적이라는 의미로 이미지 파일이나 각종 CSS ,JavaScript 같은 정적 파일을 포함한다.
+ 
+  10. store
+    store는 상태(데이터)관리를 도와주는 라이브러리인 vuex 가 포함된 디렉터리이다 .
+ 	
+    

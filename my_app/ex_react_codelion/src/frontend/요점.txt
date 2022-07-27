@@ -1,0 +1,4 @@
+cellpadding 셀과 셀간의 간격
+cellspacing 셀 내부의 빈공간
+valign : 장렬
+colspan 열 합치기
