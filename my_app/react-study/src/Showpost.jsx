@@ -67,46 +67,10 @@ const replData = [
 //   }
 // );
 
-const ShowPost = () => {
-  const [post, setPost] = useState(null);
-  const [repls, setRepls] = useState([]);
-  const [postLoading, setPostLoading] = useState(true);
-  const [replLoading, setReplLoading] = useState(true);
-
-  //input창 상태관리
-  const [repl, setRel] = useState("");
-
-  //useEffect 2개 사용하기
-  useEffect(() => {
-    setTimeout(() => {
-      setPost(postData);
-      setPostLoading(false);
-    }, 1000);
-  });
-
-  //댓글창
-  useEffect(() => {
-    setTimeout(() => {
-      setRepls(replData);
-      setReplLoading(false);
-    }, 3000);
-  });
-
-  const countRepls = (repls) => {
-    console.log("리뷰 개수를 세느 중...");
-    return repls.length;
-  };
-  //memo hook 실습
-  const replCount = useMemo(() => countRepls(repl), [repl]);
-
-  //onChange
-  const onChange = (e) => {
-    setRel(e.target.value);
-  };
-
-  return (
-    <div>
-      <PostSection>
+const PostAndRepl = React.memo(
+  ({ post, postLoading, replCount, repls, replLoading }) => {
+    return (
+      <>
         <PostTitleDiv>
           <PostTitle>{post && post.title}</PostTitle>
         </PostTitleDiv>
@@ -127,13 +91,66 @@ const ShowPost = () => {
           repls &&
           repls.map((element) => (
             <PostReplDiv key={element.id}>
-              <ReplWriter>익명</ReplWriter> 
+              <ReplWriter>익명</ReplWriter>
               <Repl>{element.content}</Repl>
             </PostReplDiv>
           ))
         )}
+      </>
+    );
+  }
+);
+
+const ShowPost = () => {
+  const [post, setPost] = useState(null);
+  const [repls, setRepls] = useState([]);
+  const [postLoading, setPostLoading] = useState(true);
+  const [replLoading, setReplLoading] = useState(true);
+  const replInput = useRef();
+  //input창 상태관리
+  const [repl, setRel] = useState("");
+
+  //useEffect 2개 사용하기
+  useEffect(() => {
+    setTimeout(() => {
+      setPost(postData);
+      setPostLoading(false);
+    }, 1000);
+  }, []);
+
+  //댓글창
+  useEffect(() => {
+    setTimeout(() => {
+      setRepls(replData);
+      setReplLoading(false);
+    }, 3000);
+    replInput.current.focus();
+  }, []);
+
+  const countRepls = (repls) => {
+    console.log("리뷰 개수를 세느 중...");
+    return repls.length;
+  };
+  //memo hook 실습
+  const replCount = useMemo(() => countRepls(repls), [repls]);
+
+  //onChange
+  const onChange = (e) => {
+    setRel(e.target.value);
+  };
+
+  return (
+    <div>
+      <PostSection>
+        <PostAndRepl
+          post={post}
+          postLoading={postLoading}
+          repls={repls}
+          replCount={replCount}
+          replLoading={replLoading}
+        />
         <WriterDiv>
-          <ReplInput onChange={onChange} value={repl} />
+          <ReplInput onChange={onChange} value={repl} ref={replInput} />
           <ReplSubmitDiv>
             <span>입력</span>
           </ReplSubmitDiv>

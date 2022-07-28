@@ -7,4 +7,4 @@ function Slogun() {
     </SlogunSection>
   );
 }
-export default Slogun;
+export default React.memo(Slogun);

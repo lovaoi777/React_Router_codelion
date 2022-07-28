@@ -9,8 +9,16 @@ import {
   TitleInput,
   PostTitle,
 } from "./styledComponent";
+import WriteTitle from "./WriteTitle";
+import InputPost from "./InputPost";
 
-function WritePost() {
+const SubmitComponent = () => (
+  <PostSubmitDiv>
+    <PostSubmit>작성완료</PostSubmit>
+  </PostSubmitDiv>
+);
+
+const WritePost = (props) => {
   //usestate함수
   const [inputs, setinput] = useState({
     title: "",
@@ -30,28 +38,19 @@ function WritePost() {
 
   return (
     <PostSection>
-      <PostTitleDiv>
-        <PostTitle>글쓰기</PostTitle>
-      </PostTitleDiv>
+      <WriteTitle />
       <PostWriteDiv>
-        <TitleInput
-          name="title"
-          value={title}
-          placeholder="제목을 입력해주세요. (15자 이내) "
+        <InputPost
           onChange={onChange}
-        />
-        <ContentsInput
-          name="content"
-          value={content}
-          cols="30"
-          rows="10"
-        ></ContentsInput>
+          title={title}
+          content={content}
+        ></InputPost>
       </PostWriteDiv>
       <PostSubmitDiv>
         <PostSubmit>작성완료</PostSubmit>
       </PostSubmitDiv>
     </PostSection>
   );
-}
+};
 
 export default WritePost;
